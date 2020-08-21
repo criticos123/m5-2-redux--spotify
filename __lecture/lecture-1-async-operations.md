@@ -85,13 +85,13 @@ const App = () => {
     fetch("/hockey")
       .then((res) => res.json())
       .then((scores) => {
-        // TODO
+        dispatch(receiveHockeyScores(scores));
       });
 
     fetch("/baseball")
       .then((res) => res.json())
       .then((scores) => {
-        // TODO
+        dispatch(receiveBaseballScores(scores));
       });
   }, []);
 
@@ -120,12 +120,16 @@ const App = () => {
   React.useEffect(() => {
     // Dispatch `receiveAllScores` after BOTH fetches have completed
 
-    fetch("/hockey").then((scores) => {
-      dispatch(receiveHockeyScores(scores));
+    fetch("/hockey")
+      .then(res=>res.json()
+      .then(scores=>{ dispatch(receiveHockeyScores(scores));}))
+
     });
 
-    fetch("/baseball").then((scores) => {
-      dispatch(receiveBaseballScores(scores));
+    fetch("/baseball")
+       .then(res=>res.json()
+       .then(scores=>{ dispatch(receiveBaseballScores(scores)
+      );
     });
   }, []);
 

@@ -113,6 +113,10 @@ export default combineReducers({
 // What is the initial state?
 ```
 
+{ color:"red";
+number:4;
+}
+
 ---
 
 ```js
